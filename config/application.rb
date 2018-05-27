@@ -17,6 +17,8 @@ require "rails/test_unit/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+ENV.update YAML.load_file('config/application.yml')[Rails.env] rescue {}
+
 module VideoAnalyticsApi
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -31,5 +33,7 @@ module VideoAnalyticsApi
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    config.autoload_paths << Rails.root.join("lib")
+    config.eager_load_paths << Rails.root.join("lib")
   end
 end
