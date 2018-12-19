@@ -1,6 +1,5 @@
 module Brightcove
   class AnalyticsApiError < StandardError; end
-  class AuthenticationError < AnalyticsApiError; end
 
   class AnalyticsApi
     OAUTH_ENDPOINT = "https://oauth.brightcove.com/v4/access_token"

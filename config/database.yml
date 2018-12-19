@@ -6,14 +6,14 @@ default: &default
 
 development:
   <<: *default
-  database: video-analytics-api_development
+  database: VideoAnalyticsApi_development
 
 test:
   <<: *default
-  database: video-analytics-api_test
+  database: VideoAnalyticsApi_test
 
 production:
   <<: *default
-  database: video-analytics-api_production
+  database: VideoAnalyticsApi_production
   username: video-analytics-api
   password: <%= ENV['VIDEO-ANALYTICS-API_DATABASE_PASSWORD'] %>

@@ -10,9 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2018_12_19_194615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "playlists", id: false, force: :cascade do |t|
+    t.string "id"
+    t.string "account_id", null: false
+    t.string "name", null: false
+    t.string "video_ids", array: true
+    t.string "playlist_type"
+    t.string "description"
+    t.string "reference_id"
+    t.boolean "favorite"
+    t.integer "limit"
+    t.string "search"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.float "video_engagement_100"
+    t.float "video_engagement_75"
+    t.float "video_engagement_50"
+    t.float "video_engagement_25"
+    t.integer "video_seconds_viewed"
+    t.integer "video_impression"
+    t.float "engagement_score"
+    t.float "video_engagement_1"
+    t.float "video_percent_viewed"
+    t.integer "play_request"
+    t.integer "video_view"
+    t.float "play_rate"
+  end
 
 end
