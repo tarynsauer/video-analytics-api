@@ -1,10 +1,10 @@
 class PlaylistsController  < ApplicationController
   # TODO: Add authentication
   def index
-    json_response Playlist.all
+    render json: Playlist.all.order(:created_at)
   end
 
   def show
-    json_response Playlist.find(params[:id])
+    render json: Playlist.find(params[:id])
   end
 end

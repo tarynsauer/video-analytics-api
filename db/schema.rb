@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_19_194615) do
+ActiveRecord::Schema.define(version: 2020_02_02_215244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "data_points", force: :cascade do |t|
+    t.bigint "playlist_id"
+    t.float "video_engagement_100"
+    t.float "video_engagement_75"
+    t.float "video_engagement_50"
+    t.float "video_engagement_25"
+    t.integer "video_seconds_viewed"
+    t.integer "video_impression"
+    t.float "engagement_score"
+    t.float "video_engagement_1"
+    t.float "video_percent_viewed"
+    t.integer "play_request"
+    t.integer "video_view"
+    t.float "play_rate"
+    t.datetime "created_at", null: false
+    t.index ["playlist_id"], name: "index_data_points_on_playlist_id"
+  end
 
   create_table "playlists", id: false, force: :cascade do |t|
     t.string "id"
@@ -28,18 +46,6 @@ ActiveRecord::Schema.define(version: 2018_12_19_194615) do
     t.string "search"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "video_engagement_100"
-    t.float "video_engagement_75"
-    t.float "video_engagement_50"
-    t.float "video_engagement_25"
-    t.integer "video_seconds_viewed"
-    t.integer "video_impression"
-    t.float "engagement_score"
-    t.float "video_engagement_1"
-    t.float "video_percent_viewed"
-    t.integer "play_request"
-    t.integer "video_view"
-    t.float "play_rate"
   end
 
 end
