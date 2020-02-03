@@ -35,5 +35,7 @@ module VideoAnalyticsApi
     config.api_only = true
     config.autoload_paths << Rails.root.join("lib")
     config.eager_load_paths << Rails.root.join("lib")
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end
