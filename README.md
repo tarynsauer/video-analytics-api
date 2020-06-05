@@ -17,3 +17,6 @@ curl -H "Authorization: token-goes-here" http://localhost:3000/playlists
 ## For deploy
 - Need to load environment variables in `config/application.yml`.
 - Need to load `credentials.yml.enc` and `master.key`
+- Need to run task to create admin.
+- Need to start redis server
+- Sidekiq
