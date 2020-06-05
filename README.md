@@ -1,24 +1,19 @@
 # README
+This is an API application for playlist and video engagement data.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Authentication
+Data access requires authentication.
 
-Things you may want to cover:
+Locally, post the credentials to:
+```
+curl -H "Content-Type: application/json" -X POST -d '{"email":"example@mail.com","password":"123123123"}' http://localhost:3000/authenticate
+```
 
-* Ruby version
+Next, get the resource using the auth token that is returned:
+```
+curl -H "Authorization: token-goes-here" http://localhost:3000/playlists
+```
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## For deploy
+- Need to load environment variables in `config/application.yml`.
+- Need to load `credentials.yml.enc` and `master.key`
