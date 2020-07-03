@@ -219,6 +219,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.11)
   rails (~> 5.2.0)
+  redis
   rspec-rails
   shoulda-matchers (~> 3.1)
   sidekiq
