@@ -12,7 +12,6 @@ namespace :cron do
   end
 
   task :send_email => :environment do
-    csv_data = PlaylistData.as_csv
-    CsvMailer.send_csv(csv_data).deliver_later
+    CsvMailer.send_csv.deliver_later
   end
 end
