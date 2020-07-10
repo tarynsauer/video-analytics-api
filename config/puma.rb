@@ -8,12 +8,16 @@ rackup      DefaultRackup
 port        ENV['PORT']     || 3000
 environment ENV['RACK_ENV'] || 'development'
 
-on_worker_boot do
-  # Worker specific setup for Rails 4.1+
-  # See: https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server#on-worker-boot
-  ActiveRecord::Base.establish_connection
-
-  if defined?(Resque)
-     Resque.redis = ENV["<redis-uri>"] || "redis://127.0.0.1:6379"
-  end
+before_fork do
+  @sidekiq_pid ||= spawn('bundle exec sidekiq -t 25')
 end
+
+on_worker_boot do
+  ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
+end
+
+on_restart do
+  Sidekiq.redis.shutdown { |conn| conn.close }
+end
+
+plugin :tmp_restart
